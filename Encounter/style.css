@@ -1,5 +1,5 @@
 body {
-  background-image: url("plain.png");
+  background-image: url("ressources/plain.png");
   /* background-color: #cccccc; */
   height: 500px; /* You must set a specified height */
   background-position: center; /* Center the image */
