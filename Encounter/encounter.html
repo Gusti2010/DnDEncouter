@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="style.css" rel="stylesheet" />
+
+    <title>D&D Encounter</title>
+  </head>
+  <body>
+    <h1>Dungeons & Dragons 5th Edition Encounter Calculator</h1>
+
+    <main>
+      <section class="left">
+        <p class="party">Party</p>
+
+        <input type="number" class="partysize" placeholder="Partysize" />
+        <input type="number" class="partyxp" placeholder="Level" />
+        <p>
+          <button class="btn addmembers">add Row</button>
+          <button class="btn rmvmembers">remove Row</button>
+        </p>
+      </section>
+
+      <section class="right">
+        <p class="enemies">Monsters</p>
+
+        <input
+          type="number"
+          class="numenemies"
+          placeholder="number of Monsters"
+        />
+        <input type="number" class="enemiesxp" placeholder="Monster XP" />
+
+        <p>
+          <button class="btn addenemies">add Row</button>
+          <button class="btn rmvmembers">remove Row</button>
+        </p>
+      </section>
+    </main>
+
+    <p>
+      <button class="btn compute">calculate</button>
+    </p>
+
+    <p class="result"></p>
+
+    <script src="script.js"></script>
+  </body>
+</html>

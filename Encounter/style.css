@@ -1,0 +1,32 @@
+body {
+  background-image: url("plain.png");
+  /* background-color: #cccccc; */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+
+  font-family: Georgia;
+  font-size: 25px;
+  padding: 80px;
+}
+
+h1 {
+  color: rgb(110, 61, 61);
+  font-size: 40px;
+}
+
+main {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.left {
+  width: 52rem;
+}
+
+.right {
+  width: 52rem;
+}
