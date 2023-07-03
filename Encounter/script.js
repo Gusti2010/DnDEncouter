@@ -123,7 +123,9 @@ const levelXP = [easy, medium, hard, deadly];
 document.querySelector(".compute").addEventListener("click", function () {
   const numberOfChars = Number(document.querySelector(".partysize").value);
   const totalXP = Number(document.querySelector(".partyxp").value);
-  const numberOfMonsters = Number(document.querySelector(".numenemies").value);
+  const numberOfMonsters =
+    Number(document.querySelector(".numenemies").value) +
+    Number(document.querySelector(".numenemies2").value);
   const totalMonsterXP =
     Number(document.querySelector(".enemiesxp").value) * numberOfMonsters;
 
