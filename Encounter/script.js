@@ -1,5 +1,54 @@
 "use strict";
 
+// Handle Monster rows
+let monrows = 1;
+// Add Monster row
+document.querySelector(".addenemies").addEventListener("click", function () {
+  if (monrows == 4) {
+    return;
+  }
+  monrows++;
+  let monx = document.getElementById("monsters" + String(monrows));
+  monx.removeAttribute("hidden");
+});
+
+// Remove Monster row
+document.querySelector(".rmvenemies").addEventListener("click", function () {
+  if (monrows == 1) {
+    return;
+  }
+  let monx = document.getElementById("monsters" + String(monrows));
+  monx.setAttribute("hidden", "");
+  document.querySelector(".numenemies" + String(monrows)).value = null;
+  document.querySelector(".enemiesxp" + String(monrows)).value = null;
+  monrows--;
+});
+
+// Handle Party rows
+let parrows = 1;
+// Add party rows
+document.querySelector(".addmembers").addEventListener("click", function () {
+  if (parrows == 4) {
+    return;
+  }
+  parrows++;
+  let parx = document.getElementById("party" + String(parrows));
+  parx.removeAttribute("hidden");
+});
+
+// Remove party row
+document.querySelector(".rmvmembers").addEventListener("click", function () {
+  if (parrows == 1) {
+    return;
+  }
+  let parx = document.getElementById("party" + String(parrows));
+  parx.setAttribute("hidden", "");
+  document.querySelector(".partysize" + String(parrows)).value = null;
+  document.querySelector(".partyxp" + String(parrows)).value = null;
+  parrows--;
+});
+
+// Calculate Encounter Difficulty
 const evaluate = function () {
   const pSize = Number(document.querySelector(".partysize").value);
   console.log(pSize);
@@ -11,6 +60,11 @@ const calculatePerXP = function (
   numberOfMonsters,
   totalMonsterXP
 ) {
+  // Catch wrong inputs
+  if (Math.min(numberOfMonsters, totalMonsterXP, level, numberOfChars) < 0) {
+    return EncounterDifficulty.ERROR;
+  }
+
   let diffMultiplier = 1.0;
   switch (numberOfMonsters) {
     case 2:
@@ -100,6 +154,7 @@ const EncounterDifficulty = {
   MEDIUM: "MEDIUM",
   HARD: "HARD",
   DEADLY: "DEADLY",
+  ERROR: "Sad Programmer Noises :(",
 };
 
 const easy = [
@@ -121,13 +176,32 @@ const deadly = [
 const levelXP = [easy, medium, hard, deadly];
 
 document.querySelector(".compute").addEventListener("click", function () {
-  const numberOfChars = Number(document.querySelector(".partysize").value);
-  const totalXP = Number(document.querySelector(".partyxp").value);
+  const numberOfChars =
+    Number(document.querySelector(".partysize").value) +
+    Number(document.querySelector(".partysize2").value);
+  Number(document.querySelector(".partysize3").value);
+  Number(document.querySelector(".partysize4").value);
+  const totalXP = Math.round(
+    (Number(document.querySelector(".partyxp").value) +
+      Number(document.querySelector(".partyxp2").value) +
+      Number(document.querySelector(".partyxp3").value) +
+      Number(document.querySelector(".partyxp4").value)) /
+      parrows
+  );
   const numberOfMonsters =
     Number(document.querySelector(".numenemies").value) +
     Number(document.querySelector(".numenemies2").value);
+  Number(document.querySelector(".numenemies3").value);
+  Number(document.querySelector(".numenemies4").value);
   const totalMonsterXP =
-    Number(document.querySelector(".enemiesxp").value) * numberOfMonsters;
+    Number(document.querySelector(".enemiesxp").value) *
+      Number(document.querySelector(".numenemies").value) +
+    Number(document.querySelector(".enemiesxp2").value) *
+      Number(document.querySelector(".numenemies2").value) +
+    Number(document.querySelector(".enemiesxp3").value) *
+      Number(document.querySelector(".numenemies3").value) +
+    Number(document.querySelector(".enemiesxp4").value) *
+      Number(document.querySelector(".numenemies4").value);
 
   const result = calculatePerXP(
     numberOfChars,
