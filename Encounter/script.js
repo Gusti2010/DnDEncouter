@@ -4,12 +4,26 @@
 let monrows = 1;
 // Add Monster row
 document.querySelector(".addenemies").addEventListener("click", function () {
-  if (monrows == 4) {
+  if (monrows == 10) {
     return;
   }
   monrows++;
-  let monx = document.getElementById("monsters" + String(monrows));
-  monx.removeAttribute("hidden");
+  var table = document.getElementById("monsterTable");
+  var row = table.insertRow(monrows);
+
+  for (var i = 0; i < 2; i++) {
+    var numTd = row.insertCell(i);
+    var sizeInput = document.createElement("input");
+    sizeInput.setAttribute("type", "number");
+    if (i == 0) {
+      sizeInput.setAttribute("class", "numenemies" + String(parrows));
+      sizeInput.setAttribute("Placeholder", "Number of monsters");
+    } else {
+      sizeInput.setAttribute("class", "enemiesxp" + String(parrows));
+      sizeInput.setAttribute("Placeholder", "Monster XP");
+    }
+    numTd.appendChild(sizeInput);
+  }
 });
 
 // Remove Monster row
@@ -17,23 +31,33 @@ document.querySelector(".rmvenemies").addEventListener("click", function () {
   if (monrows == 1) {
     return;
   }
-  let monx = document.getElementById("monsters" + String(monrows));
-  monx.setAttribute("hidden", "");
-  document.querySelector(".numenemies" + String(monrows)).value = null;
-  document.querySelector(".enemiesxp" + String(monrows)).value = null;
-  monrows--;
+  document.getElementById("monsterTable").deleteRow(monrows--);
 });
 
 // Handle Party rows
 let parrows = 1;
 // Add party rows
 document.querySelector(".addmembers").addEventListener("click", function () {
-  if (parrows == 4) {
+  if (parrows == 10) {
     return;
   }
   parrows++;
-  let parx = document.getElementById("party" + String(parrows));
-  parx.removeAttribute("hidden");
+  var table = document.getElementById("partyTable");
+  var row = table.insertRow(parrows);
+
+  for (var i = 0; i < 2; i++) {
+    var partysizeTd = row.insertCell(i);
+    var sizeInput = document.createElement("input");
+    sizeInput.setAttribute("type", "number");
+    if (i == 0) {
+      sizeInput.setAttribute("class", "partysize" + String(parrows));
+      sizeInput.setAttribute("Placeholder", "Partysize");
+    } else {
+      sizeInput.setAttribute("class", "partyxp" + String(parrows));
+      sizeInput.setAttribute("Placeholder", "Level");
+    }
+    partysizeTd.appendChild(sizeInput);
+  }
 });
 
 // Remove party row
@@ -41,11 +65,7 @@ document.querySelector(".rmvmembers").addEventListener("click", function () {
   if (parrows == 1) {
     return;
   }
-  let parx = document.getElementById("party" + String(parrows));
-  parx.setAttribute("hidden", "");
-  document.querySelector(".partysize" + String(parrows)).value = null;
-  document.querySelector(".partyxp" + String(parrows)).value = null;
-  parrows--;
+  document.getElementById("partyTable").deleteRow(parrows--);
 });
 
 // Calculate Encounter Difficulty
@@ -175,33 +195,29 @@ const deadly = [
 ];
 const levelXP = [easy, medium, hard, deadly];
 
+const inputCalc = function (str, rows, xp) {
+  let result = 0;
+  for (var i = 0; i < rows; i++) {
+    result += Number(document.querySelector(str + String(i + 1)).value);
+  }
+  return xp ? result / rows : result;
+};
+
+const monxpCalc = function (rows) {
+  let result = 0;
+  for (var i = 0; i < rows; i++) {
+    result +=
+      Number(document.querySelector(".enemiesxp" + String(i + 1)).value) *
+      Number(document.querySelector(".numenemies" + String(i + 1)).value);
+  }
+  return result;
+};
+
 document.querySelector(".compute").addEventListener("click", function () {
-  const numberOfChars =
-    Number(document.querySelector(".partysize").value) +
-    Number(document.querySelector(".partysize2").value);
-  Number(document.querySelector(".partysize3").value);
-  Number(document.querySelector(".partysize4").value);
-  const totalXP = Math.round(
-    (Number(document.querySelector(".partyxp").value) +
-      Number(document.querySelector(".partyxp2").value) +
-      Number(document.querySelector(".partyxp3").value) +
-      Number(document.querySelector(".partyxp4").value)) /
-      parrows
-  );
-  const numberOfMonsters =
-    Number(document.querySelector(".numenemies").value) +
-    Number(document.querySelector(".numenemies2").value);
-  Number(document.querySelector(".numenemies3").value);
-  Number(document.querySelector(".numenemies4").value);
-  const totalMonsterXP =
-    Number(document.querySelector(".enemiesxp").value) *
-      Number(document.querySelector(".numenemies").value) +
-    Number(document.querySelector(".enemiesxp2").value) *
-      Number(document.querySelector(".numenemies2").value) +
-    Number(document.querySelector(".enemiesxp3").value) *
-      Number(document.querySelector(".numenemies3").value) +
-    Number(document.querySelector(".enemiesxp4").value) *
-      Number(document.querySelector(".numenemies4").value);
+  const numberOfChars = inputCalc(".partysize", parrows, false);
+  const totalXP = Math.round(inputCalc(".partyxp", parrows, true));
+  const numberOfMonsters = inputCalc(".numenemies", monrows, false);
+  const totalMonsterXP = monxpCalc(monrows);
 
   const result = calculatePerXP(
     numberOfChars,

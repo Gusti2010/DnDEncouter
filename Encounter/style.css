@@ -27,7 +27,7 @@ h1 {
 }
 
 main {
-  height: 40vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
