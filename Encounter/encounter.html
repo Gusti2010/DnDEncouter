@@ -14,25 +14,67 @@
 
     <main>
       <section class="left">
-        <p class="party">Party</p>
+        <p class="party" id="head">Party</p>
 
-        <input type="number" class="partysize" placeholder="Partysize" />
-        <input type="number" class="partyxp" placeholder="Level" />
+        <table>
+          <thead>
+            <th id="smaller">Number of Characters:</th>
+            <th id="smaller">Character Level:</th>
+          </thead>
+          <tbody>
+            <tr id="party1">
+              <td>
+                <input
+                  type="number"
+                  class="partysize"
+                  placeholder="Partysize"
+                />
+              </td>
+              <td>
+                <input type="number" class="partyxp" placeholder="Level" />
+              </td>
+            </tr>
 
-        <p id="party2" hidden>
-          <input type="number" class="partysize2" placeholder="Partysize" />
-          <input type="number" class="partyxp2" placeholder="Level" />
-        </p>
+            <tr id="party2" hidden>
+              <td>
+                <input
+                  type="number"
+                  class="partysize2"
+                  placeholder="Partysize"
+                />
+              </td>
+              <td>
+                <input type="number" class="partyxp2" placeholder="Level" />
+              </td>
+            </tr>
 
-        <p id="party3" hidden>
-          <input type="number" class="partysize3" placeholder="Partysize" />
-          <input type="number" class="partyxp3" placeholder="Level" />
-        </p>
+            <tr id="party3" hidden>
+              <td>
+                <input
+                  type="number"
+                  class="partysize3"
+                  placeholder="Partysize"
+                />
+              </td>
+              <td>
+                <input type="number" class="partyxp3" placeholder="Level" />
+              </td>
+            </tr>
 
-        <p id="party4" hidden>
-          <input type="number" class="partysize4" placeholder="Partysize" />
-          <input type="number" class="partyxp4" placeholder="Level" />
-        </p>
+            <tr id="party4" hidden>
+              <td>
+                <input
+                  type="number"
+                  class="partysize4"
+                  placeholder="Partysize"
+                />
+              </td>
+              <td>
+                <input type="number" class="partyxp4" placeholder="Level" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <p>
           <button class="btn addmembers">add Row</button>
@@ -41,43 +83,83 @@
       </section>
 
       <section class="right">
-        <p class="enemies">Monsters</p>
+        <p class="enemies" id="head">Monsters</p>
 
-        <p id="monsters1">
-          <input
-            type="number"
-            class="numenemies"
-            placeholder="number of Monsters"
-          />
-          <input type="number" class="enemiesxp" placeholder="Monster XP" />
-        </p>
+        <table>
+          <thead>
+            <th id="smaller">Number of monsters:</th>
+            <th id="smaller">Monster XP:</th>
+          </thead>
+          <tbody>
+            <tr id="monsters1">
+              <td>
+                <input
+                  type="number"
+                  class="numenemies"
+                  placeholder="Number of monsters"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="enemiesxp"
+                  placeholder="Monster XP"
+                />
+              </td>
+            </tr>
 
-        <p id="monsters2" hidden>
-          <input
-            type="number"
-            class="numenemies2"
-            placeholder="number of Monsters"
-          />
-          <input type="number" class="enemiesxp2" placeholder="Monster XP" />
-        </p>
+            <tr id="monsters2" hidden>
+              <td>
+                <input
+                  type="number"
+                  class="numenemies2"
+                  placeholder="number of Monsters"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="enemiesxp2"
+                  placeholder="Monster XP"
+                />
+              </td>
+            </tr>
 
-        <p id="monsters3" hidden>
-          <input
-            type="number"
-            class="numenemies3"
-            placeholder="number of Monsters"
-          />
-          <input type="number" class="enemiesxp3" placeholder="Monster XP" />
-        </p>
+            <tr id="monsters3" hidden>
+              <td>
+                <input
+                  type="number"
+                  class="numenemies3"
+                  placeholder="number of Monsters"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="enemiesxp3"
+                  placeholder="Monster XP"
+                />
+              </td>
+            </tr>
 
-        <p id="monsters4" hidden>
-          <input
-            type="number"
-            class="numenemies4"
-            placeholder="number of Monsters"
-          />
-          <input type="number" class="enemiesxp4" placeholder="Monster XP" />
-        </p>
+            <tr id="monsters4" hidden>
+              <td>
+                <input
+                  type="number"
+                  class="numenemies4"
+                  placeholder="number of Monsters"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  class="enemiesxp4"
+                  placeholder="Monster XP"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <p>
           <button class="btn addenemies">add Row</button>

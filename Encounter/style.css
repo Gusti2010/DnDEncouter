@@ -11,6 +11,16 @@ body {
   padding: 80px;
 }
 
+#smaller {
+  font-size: 12px;
+}
+
+#head {
+  font-size: 30px;
+  color: rgb(110, 61, 61);
+  font-family: Georgia;
+}
+
 h1 {
   color: rgb(110, 61, 61);
   font-size: 40px;
@@ -29,4 +39,9 @@ main {
 
 .right {
   width: 52rem;
+}
+
+.compute {
+  width: 80px;
+  height: 50px;
 }
